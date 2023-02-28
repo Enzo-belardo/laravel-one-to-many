@@ -36,7 +36,7 @@
                 <td>{{ $project->id }}</td>
                 <td>{{ $project->title }}</td>
                 <td>{{ $project->programming_language }}</td>
-                <td>{{ $project->type }}</td>
+                <td>{{ $project->type_id }}</td>
                 <td>{{$project->year_project}}</td>
                 <td>
                  <a class = "btn btn-sm btn-primary " href=" {{ route ( 'admin.projects.show' , $project->id ) }}" >Show</a>
