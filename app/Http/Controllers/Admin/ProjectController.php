@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Type;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\storage;
@@ -27,7 +28,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create', ["project" => new Project()] );
+        return view('admin.projects.create', ["project" => new Project(), 'types' => type::all() ]);
     }
 
     /**
@@ -45,8 +46,9 @@ class ProjectController extends Controller
             'description' => 'required|string|min:10',
             'year_project' => 'required',
             'programming_language' => 'required|string|min:2|max:50',
-            'type' => 'required|string|min:2|max:50',
-            'image' => 'required|image'
+            // 'type' => 'required|string|min:2|max:50',
+            'image' => 'required|image',
+            'type_id' => 'required|exists:types, id'
         ]);
 
         $data['image'] = storage::put('imgs/', $data['image']);
@@ -77,7 +79,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        return view('admin.projects.edit', ['project' => $project , 'types' => type::all() ]);
     }
 
     /**
@@ -95,8 +97,9 @@ class ProjectController extends Controller
             'description' => 'required|string|min:10',
             'year_project' => 'required',
             'programming_language' => 'required|string|min:2|max:50',
-            'type' => 'required|string|min:2|max:50',
-            'image' => 'required|image'
+            // 'type' => 'required|string|min:2|max:50',
+            'image' => 'required|image',
+            'type_id' => 'required|exists:types, id'
         ]);
 
 
@@ -107,7 +110,7 @@ class ProjectController extends Controller
         $newProject->year_project = $data["year_project"];
         // $newProject->thumb = $data["thumb"];
         $newProject->programming_language = $data["programming_language"];
-        $newProject->type = $data["type"];
+        // $newProject->type = $data["type"];
         $newProject->image = $data['image'];
         $newProject->save();
 
