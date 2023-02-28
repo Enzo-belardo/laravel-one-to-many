@@ -24,7 +24,7 @@ class ProjectSeeder extends Seeder
             $newProject->title = $faker->word();
             $newProject->description = $faker->paragraphs(2, true);
             $newProject->programming_language = $faker->word();
-            $newProject->type = $faker->word();
+            // $newProject->type = $faker->word();
             $newProject->year_project =  $faker->year();
             // $newProject->thumb = $faker->imageUrl();
             $newProject->image= $faker->unique()->imageUrl();
