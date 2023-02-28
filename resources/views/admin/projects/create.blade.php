@@ -18,14 +18,18 @@
         @endif
 
         <div class="mb-3">
-          <label class="form-label">titolo</label>
+          <label class="form-label">Titolo</label>
           <input  type="text" class="form-control" name="title" value="{{ old('title') }}" id="" >
         </div>
 
-        <!-- <div class="mb-3">
-          <label class="form-label">Thumb</label>
-          <input type="text" class="form-control" name="thumb" value="{{ old('thumb') }}"  id="" >
-        </div> -->
+        <div class="mb-3">
+          <label for="form-label">Tipo</label>
+          <select class="form-control" name="type_id"  id="type_id">
+            @foreach ($types as $type)
+            <option value="{{ $type->id }}">{{ $type->type }}</option>
+            @endforeach
+          </select>
+        </div> 
 
         <div class="mb-3">
           <label class="form-label">Descrizione</label>
@@ -42,10 +46,10 @@
           <input type="text" class="form-control" name="programming_language" value="{{ old('programming_language') }}" id="" >
         </div>
 
-        <div class="mb-3">
+        <!-- <div class="mb-3">
           <label class="form-label">tipo</label>
           <input type="text" class="form-control" name="type" value="{{ old('type') }}" id="" >
-        </div>
+        </div> -->
 
         <div class="mb-3">
           <label class="form-label">Inserisci un immagine</label>
