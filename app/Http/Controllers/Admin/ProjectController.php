@@ -48,7 +48,7 @@ class ProjectController extends Controller
             'programming_language' => 'required|string|min:2|max:50',
             // 'type' => 'required|string|min:2|max:50',
             'image' => 'required|image',
-            'type_id' => 'required|exists:types, id'
+            'type_id' => 'required|exists:types,id'
         ]);
 
         $data['image'] = storage::put('imgs/', $data['image']);
